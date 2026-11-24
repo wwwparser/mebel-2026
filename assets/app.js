@@ -37,9 +37,10 @@ async function boot(){
       while(next < total){
         const i = next++; await loadChunk(i, true);
         state.done = (state.done || 0) + 1;
-        // фильтры пересобираем по ходу: иначе до конца загрузки в списке
-        // рубрик видна только первая порция
+        // пока идёт догрузка, результаты поиска пересчитываем на каждой порции,
+        // а список рубрик — пореже (он тяжёлый)
         if(state.done % 8 === 0){ buildFilters(); apply(); }
+        else if(state.f.q || state.f.cats.size){ apply(); }
       }
     };
     const pool = [];
@@ -116,6 +117,18 @@ function buildFilters(){
   }
 }
 
+// Поиск по словам с грубым русским стеммингом: иначе «кровать» не находит
+// «кровати», а «детская» — «детские». Стемминг считается один раз на товар.
+const RU_END = /(иями|ями|ами|ыми|ими|ов|ев|ей|ах|ях|ам|ям|ой|ый|ий|ая|ое|ые|ия|ья|ь|а|я|ы|и|о|е|у|ю)$/;
+function stem(w){ return w.length > 4 ? w.replace(RU_END, '') : w; }
+function hayOf(it){
+  if(it._s === undefined){
+    it._s = (it.t+' '+it.f+' '+it.kt+' '+(it.d||'')).toLowerCase()
+      .split(/[^a-zа-яё0-9]+/).filter(Boolean).map(stem).join(' ');
+  }
+  return it._s;
+}
+
 function matches(it){
   const f = state.f;
   if(f.cats.size && !f.cats.has(it.kt)) return false;
@@ -126,8 +139,8 @@ function matches(it){
   if(f.min!=='' && (it.p==null || it.p < +f.min)) return false;
   if(f.max!=='' && (it.p==null || it.p > +f.max)) return false;
   if(f.q){
-    const words = f.q.toLowerCase().split(/\s+/).filter(Boolean);
-    const hay = (it.t+' '+it.f+' '+it.kt+' '+(it.d||'')).toLowerCase();
+    const words = f.q.toLowerCase().split(/\s+/).filter(Boolean).map(stem);
+    const hay = hayOf(it);
     if(!words.every(w=>hay.includes(w))) return false;
   }
   return true;
