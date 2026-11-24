@@ -1,0 +1,152 @@
+{
+ "total": 24444,
+ "factories_total": 283,
+ "factories_with_products": 143,
+ "categories": 16,
+ "with_price_pct": 53,
+ "currency": "₽",
+ "date": "24.11.2026",
+ "generated_at": "2026-11-24T11:15:54+00:00",
+ "chunks": [
+  {
+   "file": "products-0.json",
+   "count": 700
+  },
+  {
+   "file": "products-1.json",
+   "count": 700
+  },
+  {
+   "file": "products-2.json",
+   "count": 700
+  },
+  {
+   "file": "products-3.json",
+   "count": 700
+  },
+  {
+   "file": "products-4.json",
+   "count": 700
+  },
+  {
+   "file": "products-5.json",
+   "count": 700
+  },
+  {
+   "file": "products-6.json",
+   "count": 700
+  },
+  {
+   "file": "products-7.json",
+   "count": 700
+  },
+  {
+   "file": "products-8.json",
+   "count": 700
+  },
+  {
+   "file": "products-9.json",
+   "count": 700
+  },
+  {
+   "file": "products-10.json",
+   "count": 700
+  },
+  {
+   "file": "products-11.json",
+   "count": 700
+  },
+  {
+   "file": "products-12.json",
+   "count": 700
+  },
+  {
+   "file": "products-13.json",
+   "count": 700
+  },
+  {
+   "file": "products-14.json",
+   "count": 700
+  },
+  {
+   "file": "products-15.json",
+   "count": 700
+  },
+  {
+   "file": "products-16.json",
+   "count": 700
+  },
+  {
+   "file": "products-17.json",
+   "count": 700
+  },
+  {
+   "file": "products-18.json",
+   "count": 700
+  },
+  {
+   "file": "products-19.json",
+   "count": 700
+  },
+  {
+   "file": "products-20.json",
+   "count": 700
+  },
+  {
+   "file": "products-21.json",
+   "count": 700
+  },
+  {
+   "file": "products-22.json",
+   "count": 700
+  },
+  {
+   "file": "products-23.json",
+   "count": 700
+  },
+  {
+   "file": "products-24.json",
+   "count": 700
+  },
+  {
+   "file": "products-25.json",
+   "count": 700
+  },
+  {
+   "file": "products-26.json",
+   "count": 700
+  },
+  {
+   "file": "products-27.json",
+   "count": 700
+  },
+  {
+   "file": "products-28.json",
+   "count": 700
+  },
+  {
+   "file": "products-29.json",
+   "count": 700
+  },
+  {
+   "file": "products-30.json",
+   "count": 700
+  },
+  {
+   "file": "products-31.json",
+   "count": 700
+  },
+  {
+   "file": "products-32.json",
+   "count": 700
+  },
+  {
+   "file": "products-33.json",
+   "count": 700
+  },
+  {
+   "file": "products-34.json",
+   "count": 644
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+<!doctype html><html lang="ru"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer">
+<title>Каталог продукции — Мебель-2026</title>
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="index.html">Мебель-2026<small>каталог продукции участников</small></a>
+  <nav class="main"><a href="index.html">Главная</a><a class="on" href="catalog.html">Каталог</a><a href="factories.html">Фабрики</a></nav>
+  <div class="grow"></div>
+</div></header>
+
+<main class="wrap"><div class="layout">
+  <aside class="filters" id="filters">
+    <div class="fhead"><b style="font-size:15px">Фильтры</b>
+      <button class="btn" id="fclose">Готово</button></div>
+    <div class="fgroup"><h4>Поиск</h4><input type="text" id="f-q" placeholder="Название, фабрика…"></div>
+    <div class="fgroup"><h4>Рубрика</h4><div id="f-cats"></div></div>
+    <div class="fgroup"><h4>Фабрика</h4><select id="f-factory"></select></div>
+    <div class="fgroup"><h4>Страна</h4><select id="f-country"></select></div>
+    <div class="fgroup"><h4>Цена, ₽</h4>
+      <div class="row2"><input type="number" id="f-min" placeholder="от"><input type="number" id="f-max" placeholder="до"></div>
+    </div>
+    <div class="fgroup">
+      <label><input type="checkbox" id="f-photo"> только с фото</label>
+      <label><input type="checkbox" id="f-price"> только с ценой</label>
+    </div>
+    <div class="fgroup"><button class="btn" id="reset" style="width:100%;justify-content:center">Сбросить фильтры</button></div>
+  </aside>
+
+  <section>
+    <div class="toolbar">
+      <button class="btn" id="ftoggle">Фильтры</button>
+      <span class="count" id="count"></span>
+      <select id="sort">
+        <option value="relevance">По разделам</option>
+        <option value="price-asc">Сначала дешевле</option>
+        <option value="price-desc">Сначала дороже</option>
+        <option value="name">По названию</option>
+      </select>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="more"><button class="btn" id="more">Показать ещё</button></div>
+  </section>
+</div></main>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()"><div class="dialog" id="dlg"></div></div>
+<footer><div class="wrap"><div>Данные собраны с открытых сайтов участников 24.11.2026.</div>
+<div><a href="index.html">На главную</a></div></div></footer>
+<script src="assets/app.js"></script></body></html>
