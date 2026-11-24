@@ -1,13 +1,13 @@
 {
- "total": 26655,
+ "total": 29809,
  "factories_total": 283,
  "factories_with_products": 142,
  "categories": 16,
- "with_price_pct": 59,
+ "with_price_pct": 63,
  "currency": "₽",
  "date": "24.11.2026",
- "generated_at": "2026-11-24T19:09:28+00:00",
- "v": "202611242209",
+ "generated_at": "2026-11-24T20:36:23+00:00",
+ "v": "202611242336",
  "chunks": [
   {
    "file": "products-0.json",
@@ -163,7 +163,23 @@
   },
   {
    "file": "products-38.json",
-   "count": 55
+   "count": 700
+  },
+  {
+   "file": "products-39.json",
+   "count": 700
+  },
+  {
+   "file": "products-40.json",
+   "count": 700
+  },
+  {
+   "file": "products-41.json",
+   "count": 700
+  },
+  {
+   "file": "products-42.json",
+   "count": 409
   }
  ]
 }
