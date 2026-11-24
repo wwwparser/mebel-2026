@@ -28,14 +28,28 @@ async function boot(){
   if($('#q')) $('#q').value = state.f.q;
   bindOnce();
   await loadChunk(0);
-  // остальные порции — фоном, не блокируя первую отрисовку
+  // Остальные порции — фоном, по нескольку сразу: последовательная загрузка
+  // 35 порций занимала минуту, и поиск до её конца искал только по части каталога.
   (async () => {
-    for(let i=1;i<state.chunks.length;i++) await loadChunk(i);
-    state.pending = 0; render();
+    let next = 1;
+    const total = state.chunks.length;
+    const worker = async () => {
+      while(next < total){
+        const i = next++; await loadChunk(i, true);
+        state.done = (state.done || 0) + 1;
+        // фильтры пересобираем по ходу: иначе до конца загрузки в списке
+        // рубрик видна только первая порция
+        if(state.done % 8 === 0){ buildFilters(); apply(); }
+      }
+    };
+    const pool = [];
+    for(let w=0; w<Math.min(6, Math.max(1,total-1)); w++) pool.push(worker());
+    await Promise.all(pool);
+    state.pending = 0; buildFilters(); apply();
   })();
 }
 
-async function loadChunk(i){
+async function loadChunk(i, quiet){
   const c = state.chunks[i];
   if(!c) return;
   try{
@@ -43,8 +57,7 @@ async function loadChunk(i){
     state.items = state.items.concat(part);
     state.loaded += part.length;
   }catch(e){ console.warn('порция не загрузилась', c.file, e); }
-  buildFilters();
-  apply();
+  if(!quiet){ buildFilters(); apply(); }
   if(state.deepItem && !state.opened && state.items.some(x=>x.i===state.deepItem)){
     state.opened = true; openProduct(state.deepItem);
   }
@@ -113,9 +126,9 @@ function matches(it){
   if(f.min!=='' && (it.p==null || it.p < +f.min)) return false;
   if(f.max!=='' && (it.p==null || it.p > +f.max)) return false;
   if(f.q){
-    const q = f.q.toLowerCase();
+    const words = f.q.toLowerCase().split(/\s+/).filter(Boolean);
     const hay = (it.t+' '+it.f+' '+it.kt+' '+(it.d||'')).toLowerCase();
-    if(!hay.includes(q)) return false;
+    if(!words.every(w=>hay.includes(w))) return false;
   }
   return true;
 }
