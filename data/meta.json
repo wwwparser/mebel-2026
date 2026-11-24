@@ -1,12 +1,12 @@
 {
- "total": 24444,
+ "total": 24134,
  "factories_total": 283,
  "factories_with_products": 143,
  "categories": 16,
- "with_price_pct": 53,
+ "with_price_pct": 54,
  "currency": "₽",
  "date": "24.11.2026",
- "generated_at": "2026-11-24T11:15:54+00:00",
+ "generated_at": "2026-11-24T15:42:55+00:00",
  "chunks": [
   {
    "file": "products-0.json",
@@ -146,7 +146,7 @@
   },
   {
    "file": "products-34.json",
-   "count": 644
+   "count": 334
   }
  ]
 }
