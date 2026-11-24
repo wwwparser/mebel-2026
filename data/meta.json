@@ -6,7 +6,8 @@
  "with_price_pct": 54,
  "currency": "₽",
  "date": "24.11.2026",
- "generated_at": "2026-11-24T16:10:13+00:00",
+ "generated_at": "2026-11-24T16:14:59+00:00",
+ "v": "202611241914",
  "chunks": [
   {
    "file": "products-0.json",
